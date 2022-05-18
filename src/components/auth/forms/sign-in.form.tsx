@@ -29,7 +29,14 @@ export const SignInForm: FC = () => {
     event.preventDefault()
 
     // Call SignIn method with email and password
-    await dispatch(signInWithEmail({ email, password }))
+    const resultSignInWithEmailAction = await dispatch(
+      signInWithEmail({ email, password })
+    )
+
+    // Call alert if sign in successfully
+    if (signInWithEmail.fulfilled.match(resultSignInWithEmailAction)) {
+      return alert('You`ve succesfully logged in')
+    }
   }
 
   useEffect(() => {
