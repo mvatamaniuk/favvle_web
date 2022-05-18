@@ -6,6 +6,7 @@ interface IPopperContentProps {
   onCloseClick?: () => void
 }
 
+//Popper content component for the sign up page
 export const PopperContent: FC<IPopperContentProps> = ({ onCloseClick }) => {
   return (
     <Box

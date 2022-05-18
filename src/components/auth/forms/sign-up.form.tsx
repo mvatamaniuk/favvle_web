@@ -6,18 +6,27 @@ import { useAuth } from '../../../hooks/auth/useAuth'
 import { InputStyled } from '../../ui/input/input.styled'
 
 export const SignUpForm: FC = () => {
+  // Email input value
   const [email, setEmail] = useState('')
+  // Password input value
   const [password, setPassword] = useState('')
+  // Confirm password input value
   const [confirmPassword, setConfirmPassword] = useState('')
 
+  // Show password flag
   const [isShowPassword, setIsShowPassword] = useState(false)
+  //Show confirm password flag
   const [isShowConfirmPassword, setIsShowConfirmPassword] = useState(false)
 
+  //AuthContext values
   const { signUpWithEmail, error } = useAuth()
 
+  // Form submit handler
   const onSubmit = async (event: FormEvent) => {
+    // Prevent from submitting a form
     event.preventDefault()
 
+    // Call SignUp method with email and password
     await signUpWithEmail(email, password)
   }
 

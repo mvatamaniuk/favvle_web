@@ -9,6 +9,8 @@ import { LinkStyled } from '../../components/ui/link/link.styled'
 import { useAuth } from '../../hooks/auth/useAuth'
 
 export const SignIn: FC = () => {
+  // AuthContext values
+
   const { error } = useAuth()
 
   return (

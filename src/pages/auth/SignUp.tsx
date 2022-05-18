@@ -11,20 +11,27 @@ import { PopperContent } from '../../components/auth/sign-up/popper.content'
 import { SuccessSignUp } from '../../components/auth/sign-up/succes.signup'
 
 export const SignUp: FC = () => {
+  // popper show state
   const [isPopperOpen, setIsPopperOpen] = useState(false)
+  // popper anchor element
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
+  // popper placement type
   const [placement, setPlacement] = useState<PopperPlacementType>()
 
   const { error, user } = useAuth()
 
+  // Handle popper click
   const handleClick =
     (newPlacement: PopperPlacementType) =>
     (event: React.MouseEvent<HTMLButtonElement>) => {
       setAnchorEl(event.currentTarget)
+      //Toggle popper show flag
       setIsPopperOpen((prev) => placement !== newPlacement || !prev)
+      // Set up popper placement
       setPlacement(newPlacement)
     }
 
+  // Chahge the view if successful sign up
   if (user) {
     return <SuccessSignUp />
   }
@@ -84,6 +91,8 @@ export const SignUp: FC = () => {
             <LinkStyled to='/auth/signin'>Already have an account?</LinkStyled>
           </Box>
 
+          {/* Show error text
+           */}
           {error && (
             <Typography textAlign='center' color='red' fontSize='12px'>
               {error}
@@ -92,6 +101,8 @@ export const SignUp: FC = () => {
         </Box>
       </Box>
 
+      {/* Custom popper component
+       */}
       <PopperStyled
         open={isPopperOpen}
         anchorEl={anchorEl}

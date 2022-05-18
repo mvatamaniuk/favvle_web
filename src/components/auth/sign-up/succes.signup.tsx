@@ -1,9 +1,12 @@
 import { Button, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import { FC } from 'react'
+
 import { useAuth } from '../../../hooks/auth/useAuth'
 
+// Show this component if successful sign up
 export const SuccessSignUp: FC = () => {
+  // AuthContext values
   const { logout } = useAuth()
 
   return (

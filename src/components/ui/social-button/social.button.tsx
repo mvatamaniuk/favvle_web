@@ -1,6 +1,7 @@
 import { styled } from '@mui/material/styles'
 import { Button, ButtonProps } from '@mui/material'
 
+//Custom SocailButton component
 export const SocialButton = styled(Button)<ButtonProps>(({ theme }) => ({
   background: '#fff',
   borderRadius: 33,

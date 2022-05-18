@@ -7,16 +7,22 @@ import { useAuth } from '../../../hooks/auth/useAuth'
 import { InputStyled } from '../../ui/input/input.styled'
 
 export const SignInForm: FC = () => {
+  // Email input value
   const [email, setEmail] = useState('')
+  // Password input value
   const [password, setPassword] = useState('')
 
+  //Show password flag
   const [isShowPassword, setIsShowPassword] = useState(false)
 
   const { signInWithEmail, error } = useAuth()
 
+  // Form submit handler
   const onSubmit = async (event: FormEvent) => {
+    // Prevent from submitting a form
     event.preventDefault()
 
+    // Call SignIn method with email and password
     await signInWithEmail(email, password)
   }
 

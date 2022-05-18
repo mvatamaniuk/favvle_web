@@ -11,8 +11,10 @@ import {
 } from '../../configs/theme/constants'
 
 export const AuthLayout: FC = () => {
+  // current location URL
   const location = useLocation()
 
+  // Turn the layout if page redirect
   const FLEX_DIRECTION =
     location.pathname === '/auth/signin' ? 'row-reverse' : 'row'
 
@@ -36,6 +38,9 @@ export const AuthLayout: FC = () => {
           background: LIGHT_GREEN_GRADIENT,
         }}
       >
+        {/* This element will render either <SignIn> when the URL is
+          "/auth/signin", <SignUp> at "/auth/signup"
+      */}
         <Outlet />
       </ContainerStyled>
 

@@ -2,7 +2,10 @@ import { createTheme } from '@mui/material/styles'
 import { GREEN_GRADIENT, LIGHT_GREEN_GRADIENT } from './constants'
 import { buttonStyles } from './shared-styles/button.styles'
 
+// Generate a theme base on the options received.
 export const theme = createTheme({
+  //The palette enables you to modify the color of the components to suit your brand.
+
   palette: {
     gradient: {
       main: 'linear-gradient(180deg, #F18B6D 0%, #AD3C3B 100%)',
@@ -17,9 +20,10 @@ export const theme = createTheme({
     },
   },
 })
-
+// Theme components overrides
 theme.typography = {
   ...theme.typography,
+  // Modified h1 variant
   h1: {
     fontSize: 26,
     fontFamily: 'Montserrat',
@@ -28,6 +32,7 @@ theme.typography = {
     color: theme.palette.primary.main,
     opacity: 0.7,
   },
+  // Modified h1 variant
   subtitle1: {
     fontSize: 17,
     opacity: 0.55,
@@ -36,9 +41,10 @@ theme.typography = {
     color: theme.palette.primary.main,
   },
 }
-
+// Theme components overrides
 theme.components = {
   ...theme.components,
+  //Overrided MuiButton
   MuiButton: {
     styleOverrides: {
       contained: {
