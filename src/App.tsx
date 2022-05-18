@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter } from 'react-router-dom'
+import { ThemeProvider } from '@mui/material/styles'
 
-function App() {
+import { AuthProvider } from './providers/AuthProvider'
+import { useNavigation } from './hooks/navigation/useNavigation'
+
+import { theme } from './configs/theme/mui.theme.config'
+
+const App = () => {
+  const navigation = useNavigation()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <AuthProvider>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>{navigation}</BrowserRouter>
+      </ThemeProvider>
+    </AuthProvider>
+  )
 }
 
-export default App;
+export default App

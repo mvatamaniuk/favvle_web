@@ -1,0 +1,11 @@
+import { styled } from '@mui/material'
+import { NavLink } from 'react-router-dom'
+
+export const LinkStyled = styled(NavLink)(({ theme }) => ({
+  fontFamily: 'Helvetica',
+  fontWeight: 400,
+  fontSize: 14,
+  letterSpacing: 0.336,
+  color: theme.palette.primary.main,
+  opacity: 0.55,
+}))
