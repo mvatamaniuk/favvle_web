@@ -66,10 +66,11 @@ export const SignUpForm: FC = () => {
           <IconButton
             disableRipple
             onClick={() => setIsShowPassword(!isShowPassword)}
+            sx={{ p: 0 }}
           >
             <VisibilityIcon
               color={isShowPassword ? 'warning' : 'inherit'}
-              fontSize='small'
+              sx={{ fontSize: 15 }}
             />
           </IconButton>
         }
@@ -84,9 +85,10 @@ export const SignUpForm: FC = () => {
           <IconButton
             disableRipple
             onClick={() => setIsShowConfirmPassword(!isShowConfirmPassword)}
+            sx={{ p: 0 }}
           >
             <VisibilityIcon
-              fontSize='small'
+              sx={{ fontSize: 15 }}
               color={isShowConfirmPassword ? 'warning' : 'inherit'}
             />
           </IconButton>

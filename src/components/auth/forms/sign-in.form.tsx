@@ -63,10 +63,12 @@ export const SignInForm: FC = () => {
             <IconButton
               disableRipple
               onClick={() => setIsShowPassword(!isShowPassword)}
+              sx={{ p: 0 }}
             >
               <VisibilityIcon
+                sx={{ fontSize: 15 }}
                 color={isShowPassword ? 'warning' : 'inherit'}
-                fontSize='small'
+                // fontSize='12px'
               />
             </IconButton>
           }
