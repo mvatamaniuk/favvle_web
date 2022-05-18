@@ -2,8 +2,12 @@ import { IconButton } from '@mui/material'
 import { FC, FormEvent, useState } from 'react'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 
-import { useAuth } from '../../../hooks/auth/useAuth'
 import { InputStyled } from '../../ui/input/input.styled'
+
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux/useRexux'
+
+import { signUpWithEmail } from '../../../redux/auth/auth.thunks'
+import { selectAuth } from '../../../redux/auth/auth.selectors'
 
 export const SignUpForm: FC = () => {
   // Email input value
@@ -18,8 +22,8 @@ export const SignUpForm: FC = () => {
   //Show confirm password flag
   const [isShowConfirmPassword, setIsShowConfirmPassword] = useState(false)
 
-  //AuthContext values
-  const { signUpWithEmail, error } = useAuth()
+  const dispatch = useAppDispatch()
+  const { error } = useAppSelector(selectAuth)
 
   // Form submit handler
   const onSubmit = async (event: FormEvent) => {
@@ -27,7 +31,7 @@ export const SignUpForm: FC = () => {
     event.preventDefault()
 
     // Call SignUp method with email and password
-    await signUpWithEmail(email, password)
+    await dispatch(signUpWithEmail({ email, password }))
   }
 
   return (

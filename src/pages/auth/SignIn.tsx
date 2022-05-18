@@ -3,15 +3,15 @@ import { Box, Button, Typography } from '@mui/material'
 
 import { SignInForm } from '../../components/auth/forms/sign-in.form'
 import { SocialAuth } from '../../components/auth/social.auth'
-
 import { LinkStyled } from '../../components/ui/link/link.styled'
 
-import { useAuth } from '../../hooks/auth/useAuth'
+import { selectAuth } from '../../redux/auth/auth.selectors'
+
+import { useAppSelector } from '../../hooks/redux/useRexux'
 
 export const SignIn: FC = () => {
-  // AuthContext values
-
-  const { error } = useAuth()
+  // select auth values
+  const { error } = useAppSelector(selectAuth)
 
   return (
     <Box

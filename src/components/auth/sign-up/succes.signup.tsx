@@ -2,12 +2,13 @@ import { Button, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import { FC } from 'react'
 
-import { useAuth } from '../../../hooks/auth/useAuth'
+import { useAppDispatch } from '../../../hooks/redux/useRexux'
+
+import { logout } from '../../../redux/auth/auth.thunks'
 
 // Show this component if successful sign up
 export const SuccessSignUp: FC = () => {
-  // AuthContext values
-  const { logout } = useAuth()
+  const dispatch = useAppDispatch()
 
   return (
     <Box
@@ -32,7 +33,11 @@ export const SuccessSignUp: FC = () => {
       </Box>
 
       <Box>
-        <Button variant='contained' sx={{ width: 250 }} onClick={logout}>
+        <Button
+          variant='contained'
+          sx={{ width: 250 }}
+          onClick={() => dispatch(logout())}
+        >
           Continue
         </Button>
       </Box>

@@ -1,14 +1,16 @@
 import { FC, useState } from 'react'
 import { Box, Button, PopperPlacementType, Typography } from '@mui/material'
+import { useSelector } from 'react-redux'
 
 import { SignUpForm } from '../../components/auth/forms/sign-up.form'
 import { SocialAuth } from '../../components/auth/social.auth'
 import { LinkStyled } from '../../components/ui/link/link.styled'
 import { PopperStyled } from '../../components/ui/popper/popper.styled'
 
-import { useAuth } from '../../hooks/auth/useAuth'
 import { PopperContent } from '../../components/auth/sign-up/popper.content'
 import { SuccessSignUp } from '../../components/auth/sign-up/succes.signup'
+
+import { selectAuth } from '../../redux/auth/auth.selectors'
 
 export const SignUp: FC = () => {
   // popper show state
@@ -18,7 +20,8 @@ export const SignUp: FC = () => {
   // popper placement type
   const [placement, setPlacement] = useState<PopperPlacementType>()
 
-  const { error, user } = useAuth()
+  // select auth values
+  const { user, error } = useSelector(selectAuth)
 
   // Handle popper click
   const handleClick =
