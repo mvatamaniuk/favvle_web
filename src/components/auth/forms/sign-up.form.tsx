@@ -37,9 +37,7 @@ export const SignUpForm: FC = () => {
 
   useEffect(() => {
     return () => {
-      if (error) {
-        dispatch(cleanError())
-      }
+      dispatch(cleanError())
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
