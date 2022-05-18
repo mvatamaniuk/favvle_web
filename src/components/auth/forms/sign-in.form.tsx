@@ -1,5 +1,5 @@
+import { FC, FormEvent, useEffect, useState } from 'react'
 import { IconButton } from '@mui/material'
-import { FC, FormEvent, useState } from 'react'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 
 import { InputStyled } from '../../ui/input/input.styled'
@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from '../../../hooks/redux/useRexux'
 
 import { signInWithEmail } from '../../../redux/auth/auth.thunks'
 import { selectAuth } from '../../../redux/auth/auth.selectors'
+import { cleanError } from '../../../redux/auth/auth.slice'
 
 export const SignInForm: FC = () => {
   // Email input value
@@ -30,6 +31,16 @@ export const SignInForm: FC = () => {
     // Call SignIn method with email and password
     await dispatch(signInWithEmail({ email, password }))
   }
+
+  useEffect(() => {
+    return () => {
+      if (error) {
+        dispatch(cleanError())
+      }
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <>
@@ -68,7 +79,6 @@ export const SignInForm: FC = () => {
               <VisibilityIcon
                 sx={{ fontSize: 15 }}
                 color={isShowPassword ? 'warning' : 'inherit'}
-                // fontSize='12px'
               />
             </IconButton>
           }

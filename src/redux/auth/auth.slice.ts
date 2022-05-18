@@ -11,6 +11,9 @@ const authSlice = createSlice({
     setUser: (state, action: PayloadAction<FirebaseUser>) => {
       state.user = action.payload
     },
+    cleanError: (state) => {
+      state.error = null
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(signInWithEmail.fulfilled, (state) => {
@@ -34,6 +37,6 @@ const authSlice = createSlice({
   },
 })
 
-export const { setUser } = authSlice.actions
+export const { setUser, cleanError } = authSlice.actions
 
 export default authSlice.reducer
